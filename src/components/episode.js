@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player/lazy';
-import EpisodeTimestamp from './episode/timestamp';
+import TrackList from './episode/trackList';
 
 const episodes = {
     303: {
@@ -46,6 +46,10 @@ class Episode extends Component {
         loop: false,
         episode: episodes[this.props.match.params.episode],
         currentTrack: null,
+    }
+
+    seekToTrack = track => {
+        this.player.seekTo(track.timestamp);
     }
 
     handleSeekMouseDown = e => {
@@ -96,18 +100,12 @@ class Episode extends Component {
     }
 
     render() { 
-        const trackList = this.state.episode.tracks.map(track => (
-            <li key={track.timestamp} className={`${this.state.currentTrack === track ? 'current' : ''}`}>
-                <EpisodeTimestamp seconds={track.timestamp} />: {track.artist} - {track.name}
-            </li>
-        ));
-
         return (
             <React.Fragment>
                 <h1>Episode {this.state.episode.episode_number} - {this.state.episode.name} </h1>
-                <ul>
-                    {trackList}
-                </ul>
+                <TrackList tracks={this.state.episode.tracks}
+                    currentTrack={this.state.currentTrack}
+                    selectTrackHandler={this.seekToTrack}/>
                 <ReactPlayer
                     ref={this.ref}
                     url={this.state.episode.url}

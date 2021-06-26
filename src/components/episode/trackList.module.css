@@ -1,0 +1,11 @@
+.trackList {
+    list-style: none;
+    padding-left: 0;
+}
+.tracklistItem {
+    color: red;
+}
+.tracklistItemCurrent {
+    color: gold;
+    font-weight: 600;
+}
