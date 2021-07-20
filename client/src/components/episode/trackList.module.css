@@ -1,0 +1,38 @@
+.trackList {
+    list-style: none;
+    padding: 0;
+}
+.tracklistItem {
+    transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+    background-color: #182269;
+    color: white;
+    position: relative;
+    padding: 1rem 0.4rem;
+}
+.tracklistItem:hover {
+    cursor: pointer;
+    background-color: #2b378e;
+}
+
+.tracklistItemCurrent {
+    background: black;
+    color: #F0D283;
+}
+
+.trackInfo span {
+    display: block;
+}
+.trackTitle {
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.timestamp {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: black;
+    padding: 4px 5px;
+}
